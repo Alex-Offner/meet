@@ -17,7 +17,7 @@ class NumberOfEvents extends Component {
     render() {
         const numberOfEvents = this.state.numberOfEvents;
         return (
-            <div className="numberOfEvents">
+            <div className="NumberOfEvents">
                 <label className="number-label">Choose a number of events:</label>
                 <br />
                 <input
