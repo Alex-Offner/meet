@@ -1,7 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+body {
+  background-image: url("files/city-background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+}
+
+h1 {
+  font-size: 5em;
+}
+
 .App {
   text-align: center;
   padding: 2% 5%;
+
 }
 
 .App * {
@@ -38,6 +53,10 @@ input[type="number"] {
 
 .city {
   width: 250px;
+}
+
+.city:hover {
+  opacity: 0.9;
 }
 
 .CitySearch {
@@ -78,23 +97,60 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
+.EventList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  
+}
+
+.EventList li {
+  width:40%;
+}
+
 .event {
+  background-color: white;
+  width: 100%;
   padding: 10px 10px 35px;
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  border: 1px solid black;
 }
 
-.details-btn {
-  position: absolute;
+.show-details-button {
+  background-color: #e7e7e7;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  margin-top: 5px;
+}
+
+.hide-details-button {
+  background-color: #e7e7e7;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  margin-top: 5px;
+
+}
+
+.show-details-button:hover {
+  opacity: 0.7;
+}
+
+.hide-details-button:hover {
+  opacity: 0.7;
 }
 
 .name {
@@ -116,16 +172,23 @@ input[type="number"] {
   overflow-x: hidden;
 }
 
-.numberOfEvents {
-  width: 200px;
+.NumberOfEvents {
+  width: 20%;
   margin: 20px auto;
   text-align: center;
+  background-color: white;
+  padding: 20px 0 20px 0;
 }
 
 .number-events {
   max-width: 75px;
   margin: 20px auto;
   text-align: center;
+}
+
+.number-label {
+  padding: 5px;
+  color: black;
 }
 
 .button-wrapper {
@@ -218,4 +281,31 @@ input[type="number"] {
     min-width: auto;
     margin: 0 auto;
   }
+}
+
+@media screen and (max-width: 750px) {
+
+  .EventList {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    
+  }
+  .EventList li {
+    width:70%;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  .NumberOfEvents {
+    width: 40%;
+
+  }
+  
+
 }
