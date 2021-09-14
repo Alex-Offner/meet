@@ -16,8 +16,9 @@ class NumberOfEvents extends Component {
     render() {
         const numberOfEvents = this.state.numberOfEvents;
         return (
-            <div>
+            <div className="numberOfEvents">
                 <label className="number-label">Choose a number of events:</label>
+                <br />
                 <input
                     type='number'
                     className='number-events'
@@ -25,7 +26,7 @@ class NumberOfEvents extends Component {
                     onChange={(e) => this.handleInputChanged(e)}
                     placeholder="Number of Events"
                 />
-            </div>
+            </div >
         );
     }
 }
