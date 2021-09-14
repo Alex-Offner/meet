@@ -1,6 +1,12 @@
-import axios from 'axios';
 import { mockData } from './mock-data';
+import axios from 'axios';
 import NProgress from 'nprogress';
+
+export const extractLocations = (events) => {
+    var extractLocations = events.map((event) => event.location);
+    var locations = [...new Set(extractLocations)];
+    return locations;
+};
 
 const removeQuery = () => {
     if (window.history.pushState && window.location.pathname) {
@@ -34,11 +40,12 @@ export const getEvents = async () => {
         return mockData;
     }
 
+
     const token = await getAccessToken();
 
     if (token) {
         removeQuery();
-        const url = 'https://dat3m21my8.execute-api.us-west-2.amazonaws.com/dev/api/get-events' + token;
+        const url = 'https://dat3m21my8.execute-api.us-west-2.amazonaws.com/dev/api/get-events' + '/' + token;
         const result = await axios.get(url);
         if (result.data) {
             var locations = extractLocations(result.data.events);
@@ -59,7 +66,9 @@ export const getAccessToken = async () => {
         const searchParams = new URLSearchParams(window.location.search);
         const code = await searchParams.get("code");
         if (!code) {
-            const results = await axios.get("https://dat3m21my8.execute-api.us-west-2.amazonaws.com/dev/api/get-auth-url");
+            const results = await axios.get(
+                "https://dat3m21my8.execute-api.us-west-2.amazonaws.com/dev/api/get-auth-url"
+            );
             const { authUrl } = results.data;
             return (window.location.href = authUrl);
         }
@@ -70,7 +79,9 @@ export const getAccessToken = async () => {
 
 const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
-    const { access_token } = await fetch(`https://dat3m21my8.execute-api.us-west-2.amazonaws.com/dev/api/token/${encodeCode}`)
+    const { access_token } = await fetch(
+        'https://dat3m21my8.execute-api.us-west-2.amazonaws.com/dev/api/token' + '/' + encodeCode
+    )
         .then((res) => {
             return res.json();
         })
@@ -81,8 +92,3 @@ const getToken = async (code) => {
     return access_token;
 };
 
-export const extractLocations = (events) => {
-    var extractLocations = events.map((event) => event.location);
-    var locations = [...new Set(extractLocations)];
-    return locations;
-};
