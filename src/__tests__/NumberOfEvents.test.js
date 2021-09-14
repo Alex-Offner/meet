@@ -17,15 +17,15 @@ describe("<NumberOfEvents /> component", () => {
     });
 
     test("check if 5 events are shown", () => {
-        expect(NumberOfEventsWrapper.find(".number-events").prop("value")).toEqual(5);
+        expect(NumberOfEventsWrapper.find(".number-events").prop("value")).toEqual(32);
     });
 
     test('change state when text input changes', () => {
         NumberOfEventsWrapper.setState({
-            numberOfEvents: '5'
+            numberOfEvents: '32'
         });
-        const eventObject = { target: { value: '2' } };
+        const eventObject = { target: { value: '32' } };
         NumberOfEventsWrapper.find('.number-events').simulate('change', eventObject);
-        expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe('2');
+        expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe('32');
     });
 });
