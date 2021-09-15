@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
+import NumberOfEvents from "../NumberOfEvents";
 import { mockData } from '../mock-data';
 import { extractLocations, getEvents } from '../api';
 
@@ -19,6 +20,10 @@ describe('<App /> component', () => {
 
     test('render CitySearch', () => {
         expect(AppWrapper.find(CitySearch)).toHaveLength(1);
+    });
+
+    test("render NumberOfEvents", () => {
+        expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
     });
 });
 
@@ -62,4 +67,26 @@ describe('<App /> integration', () => {
         expect(AppWrapper.state('events')).toEqual(allEvents);
         AppWrapper.unmount();
     });
+
+    test('change state when text input changes', async () => {
+        const AppWrapper = mount(<App />);
+        AppWrapper.setState({ numberOfEvents: '32' });
+        const eventObject = { target: { value: '5' } };
+
+        const NumberOfEventsComponent = AppWrapper.find(NumberOfEvents);
+        NumberOfEventsComponent.find('#number-of-events').simulate('change', eventObject);
+
+        expect(AppWrapper.state('numberOfEvents')).toBe('5');
+
+        AppWrapper.unmount();
+    });
+
+    // test('change state when text input changes', () => {
+    //     NumberOfEventsWrapper.setState({
+    //         numberOfEvents: '32'
+    //     });
+    //     const eventObject = { target: { value: '32' } };
+    //     NumberOfEventsWrapper.find('.number-events').simulate('change', eventObject);
+    //     expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe('32');
+    // });
 });

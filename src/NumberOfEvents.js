@@ -23,6 +23,7 @@ class NumberOfEvents extends Component {
                 <input
                     type='number'
                     className='number-events'
+                    id="number-of-events"
                     value={numberOfEvents}
                     onChange={(e) => this.handleInputChanged(e)}
                     placeholder="1"
