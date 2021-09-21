@@ -54,7 +54,9 @@ class CitySearch extends Component {
                     <li onClick={() => this.handleItemClicked("all")}>
                         <b>See all cities</b>
                     </li>
-                    <li style={this.state.infoText ? {} : { display: 'none' }}><InfoAlert text={this.state.infoText} /></li>
+                    {this.state.infoText
+                        ? <li><InfoAlert text={this.state.infoText} /></li>
+                        : <div></div>}
                 </ul>
 
             </div>
