@@ -5,7 +5,6 @@ class Alert extends Component {
         super(props);
         this.color = null;
         this.fontSize = '16px';
-        // this.backgroundColor = null;
         // this.padding = null;
     }
 
