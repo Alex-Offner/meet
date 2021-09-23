@@ -40,6 +40,9 @@ class App extends Component {
     this.updateEvents(currentLocation, eventNumber);
   }
 
+  //This is the old componentDidMount function, that was used before getting the app ready for verification. If you comment out the new one and the WelcomeSceen component,
+  //and activate this one the app runs again online and offline
+
   // componentDidMount() {
   //   const { numberOfEvents } = this.state;
   //   this.mounted = true;
@@ -52,6 +55,9 @@ class App extends Component {
   //     }
   //   });
   // }
+
+  //This is the new async componentDidMount function. If this is active and the WelcomeScreen render is active the app doesn't load offline and loads an error in console log.
+  //This is the state it is deployed right now.
 
   async componentDidMount() {
     this.mounted = true;
@@ -75,14 +81,16 @@ class App extends Component {
   }
 
   render() {
+    //commenting the next line out and activating the old component did mount function makes the app run again online and offline
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
     return (
       <div className="App">
-        <h1>Welcome to Alex2 Meet</h1>
+        <h1>Welcome to Meet</h1>
         {!navigator.onLine ? (<WarningAlert text='You are currently offline! Some features might not be availabele!' />) : (<div></div>)}
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateNumberOfEvents={(e) => this.updateNumberOfEvents(e)} />
         <EventList events={this.state.events} />
+        {/* commenting the next line out and activating the old component did mount function makes the app run again online and offline */}
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
