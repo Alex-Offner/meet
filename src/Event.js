@@ -16,7 +16,7 @@ class Event extends Component {
 
         return (
             <div className="event">
-                <h1 className="event-title"></h1>
+                <h2 className="event-title">{event.summary}</h2>
                 <p className="event-date"></p>
                 <p className="event-location">{event.location}</p>
                 {this.state.show === true && (
