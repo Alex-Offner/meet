@@ -2,6 +2,8 @@
 
 This meet app will be a sverless, progressive web app, written with React and using the test-driven development technique. The google Calendar API will be used to fetch upcoming events.
 
+![](src/files/meet.gif)
+
 
 ## Upcoming Features, User stories and scenarios
 
